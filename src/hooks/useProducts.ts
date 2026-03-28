@@ -28,7 +28,7 @@ export const useProducts = () => {
         .eq("in_stock", true)
         .order("created_at", { ascending: false });
       if (error) throw error;
-      return data as Product[];
+      return data as unknown as Product[];
     },
   });
 };
@@ -44,7 +44,7 @@ export const useProduct = (slug: string | undefined) => {
         .eq("slug", slug)
         .maybeSingle();
       if (error) throw error;
-      return data as Product | null;
+      return data as unknown as Product | null;
     },
     enabled: !!slug,
   });
